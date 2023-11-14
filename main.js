@@ -38,7 +38,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "https://unsplash.it/300/300?image=20"
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -59,6 +59,8 @@ const posts = [
 let container = document.getElementById("container")
 
 let postDOM = ""
+
+
 
 posts.forEach((element, index, array) => {
     
@@ -93,6 +95,28 @@ posts.forEach((element, index, array) => {
     </div>            
 </div>`
 
+console.log(element.id);
+
+
 })
 
 container.innerHTML = postDOM;  
+
+const likeButtons = document.querySelectorAll('.js-like-button');
+
+let myEvent = false
+
+likeButtons.forEach(likeButtons => {
+    likeButtons.addEventListener("click", function(){
+        myEvent = !myEvent;
+
+        const postID = this.getAttribute("data-postid")
+
+        if (myEvent) {
+            likeButtons.classList.add("like-button--liked")
+        } else {
+            likeButtons.classList.remove("like-button--liked")
+        }
+    })
+    
+});
