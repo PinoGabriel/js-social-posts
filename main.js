@@ -38,7 +38,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": "https://unsplash.it/300/300?image=20"
+            "image": null
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -83,7 +83,7 @@ posts.forEach((element, index, array) => {
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" data-postid="${element.id}">
+                <a class="like-button  js-like-button" data-postid="${element.id}">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
@@ -109,8 +109,6 @@ let myEvent = false
 likeButtons.forEach(likeButtons => {
     likeButtons.addEventListener("click", function(){
         myEvent = !myEvent;
-
-        const postID = this.getAttribute("data-postid")
 
         if (myEvent) {
             likeButtons.classList.add("like-button--liked")
